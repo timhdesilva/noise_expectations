@@ -1,7 +1,7 @@
 # Replication Code for "Noise in Expectations: Evidence from Analyst Forecasts"
 ## Authors: Tim de Silva, David Thesmar
 
-## Instructions to run code
+### Instructions to run code
 
 Before the code can be run, each file needs to be opened. At the top of each code file, there is a section titled "TO BE ADJUSTED BY USER". These parameters need to be adjusted as described in order for the code to run. If a file does not have this section, then nothing needs to be adjusted to be run.
 
