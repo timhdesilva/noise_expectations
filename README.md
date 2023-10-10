@@ -1,4 +1,5 @@
-# Replication Code for "Noise in Expectations: Evidence from Analyst Forecasts", by Tim de Silva and David Thesmar
+# Replication Code for "Noise in Expectations: Evidence from Analyst Forecasts"
+## Authors: Tim de Silva, David Thesmar
 
 ## Instructions to run code
 
