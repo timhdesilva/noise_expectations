@@ -575,7 +575,7 @@ def GMM_estimation(df, min_j, normalize_mse=True, variance=False, normalizer=Non
     for ix in range(len(Ws)):
         theta = theta + gamma_z[ix]*np.mean(df[Ws[ix]])
     delta = df['delta'].mean()
-    # Normalizations - if you normalized by price, it will be taken into account here!
+    # Normalizations
     variance_eps = df['E_it'].var()
     squared_eps = (df['E_it']**2).mean()
     if normalizer is None:
@@ -781,7 +781,6 @@ def make_decomp_table(matchid, across_freq, estimator, W, scaled_p, include_4):
     countJ = []
     for df in dfs_q + dfs_a:
         df_it = df.groupby(['i', 't'])[['E_it', 'F_ijt', 'Fe_it']].mean()
-        ## itj unique
         df_itj = df[['i', 't', 'j']].merge(df_it, how = 'left', on = ['i', 't'])
         df_itj['se_a'] = (df_itj['E_it'] - df_itj['F_ijt'])**2
         df_itj['se_m'] = (df_itj['E_it'] - df_itj['Fe_it'])**2
@@ -800,7 +799,6 @@ def make_decomp_table(matchid, across_freq, estimator, W, scaled_p, include_4):
         countJ.append(EJinv)
     pout['MSE_diff'] = MSEdiffs
     pout['EJinv'] = countJ
-    # Calculate David statistic
     pout['MSE_diff_aa'] = MSEdiffs_aa
     pout['Sigma_check'] = (pout['MSE_diff_aa'] - pout['MSE_diff'])/(1 - pout['EJinv'])
     pout['crowd_gain'] = (pout['MSE_diff_aa'] - pout['MSE_diff'])/np.abs(pout['MSE_diff_aa'])
@@ -988,7 +986,6 @@ def PT_estimation(inc_beta0, matchid, across_freq, estimator, W, scaled_p, inclu
     fig = plt.figure(figsize = (12,3))
     gs = gridspec.GridSpec(nrows = 1, ncols = 3, wspace = 0.4, hspace = 0.6)
     titles = ["Soft Bias: $\\alpha_h$", "Public Bias: $\Delta_h$", "Noise: $\Sigma_h$", "Slope Coefficient: $\delta^1_h$", "Intercept: $\delta^0_h$"]
-    # for i in range(N_byh):
     for i in range(3):
         pid = i + np.array([N_byh*pi for pi in range(Nh)])
         if i < 3:

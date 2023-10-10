@@ -621,11 +621,7 @@ run;
 proc download data = ibesratios_firmyear out = tds.datait_&freq&h;
 run;
 
-endrsubmit;
-
-* Check missings and outliers - THERE WILL BE SOME MISSINGS HERE;
-proc means data = tds.datait_&freq&h nmiss mean median min p1 p99 max skew kurt; 
-run;
+endrsubmit;å
 
 %mend form_df;
 
